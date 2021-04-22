@@ -15,15 +15,28 @@ var peerConnectionConfig = {
 
 function start() {
 
+  
   localUuid = createUUID();
 
   // check if "&displayName=xxx" is appended to URL, otherwise alert user to populate
   
   var urlParams = new URLSearchParams(window.location.search);
-  if (!urlParams.get('pdfOnly')) {
+
+
+  var isAudio = false;
+
+  if (urlParams.get('pdfOnly')) {
+    document.getElementById('videos').style.display = 'none';
+    if (urlParams.get('teacher')) { // if its a teacher doing PDF only we don't need to show their face
+      return;
+    }
+    localDisplayName = "EPSON";
+  } else {
+    isAudio = true;
     localDisplayName = urlParams.get('displayName') || prompt('Enter your name', '');
-    document.getElementById('localVideoContainer').appendChild(makeLabel(localDisplayName));
   }
+     
+  document.getElementById('localVideoContainer').appendChild(makeLabel(localDisplayName));
 
   var constraints = {
     video: {
@@ -31,13 +44,9 @@ function start() {
       height: {max: 240},
       frameRate: {max: 30},
     },
-    audio: false,
+    audio: isAudio
   };
 
-  if (urlParams.get('pdfOnly')) {
-    document.getElementById('videos').remove();
-    return;
-  }
 
   // set up local video stream
   if (navigator.mediaDevices.getUserMedia) {
@@ -51,7 +60,6 @@ function start() {
       .then(() => {
         serverConnection = new WebSocket('wss://' + window.location.hostname + ':' + WS_PORT);
         serverConnection.onmessage = gotMessageFromServer;
-        alert(localUuid);
         serverConnection.onopen = event => {
           serverConnection.send(JSON.stringify({ 'displayName': localDisplayName, 'uuid': localUuid, 'dest': 'all' }));
         }
@@ -65,6 +73,8 @@ function start() {
 function gotMessageFromServer(message) {
   var signal = JSON.parse(message.data);
   var peerUuid = signal.uuid;
+
+  if (signal.draw) return;
 
   // Ignore messages that are not for us or from ourselves
   if (peerUuid == localUuid || (signal.dest != localUuid && signal.dest != 'all')) return;
@@ -117,7 +127,12 @@ function createdDescription(description, peerUuid) {
 }
 
 function gotRemoteStream(event, peerUuid) {
+  if (event.track.kind == "audio") return;
+
   console.log(`got remote stream, peer ${peerUuid}`);
+
+  
+
   //assign stream to new HTML video element
   var vidElement = document.createElement('video');
   vidElement.setAttribute('autoplay', '');

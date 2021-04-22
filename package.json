@@ -1,7 +1,7 @@
 {
-  "name": "WebRTC-Example",
+  "name": "MusicLesson",
   "version": "1.0.0",
-  "description": "An 'as simple as it gets' WebRTC example.",
+  "description": "David Hampson Thesis (compilation package)",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
@@ -9,18 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shanet/WebRTC-Example.git"
+    "url": "git+https://github.com/davidhampson/Thesis.git"
   },
   "keywords": [
     "webrtc"
   ],
-  "author": "shane tully",
+  "author": "David Hampson",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shanet/WebRTC-Example/issues"
-  },
-  "homepage": "https://github.com/shanet/WebRTC-Example#readme",
   "dependencies": {
+    "jquery": "^3.6.0",
+    "socket.io": "^4.0.1",
     "ws": "^3.3.2"
   }
 }

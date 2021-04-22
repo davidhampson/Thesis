@@ -6,10 +6,11 @@
   <link rel="icon" href="data:,">
 
   <link rel="stylesheet" href="style.css">
-
+	<script type="text/javascript" src="/js/jquery.js"></script>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="webrtc.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script type="text/javascript" src="/js/jquery.event.drag-2.0.js"></script>
+  <script src="draw.js"></script>
 </head>
 
 <body>
@@ -23,19 +24,13 @@
     <!-- Remote videos get appended here -->
     
   </div>
-  <div id='adobe-dc-view'></div>
+
+  <button id="clear">X</button>
+	<div id="drawHost">
+    <!-- our canvas will be inserted here-->
+  </article>
+
   <script type="text/javascript">
-      document.addEventListener("adobe_dc_view_sdk.ready", function(){
-      var adobeDCView = new AdobeDC.View({clientId: "cbbda6393455495ca97d98989143c63f", divId: "adobe-dc-view"});
-      adobeDCView.previewFile({
-        content:{ location: 
-          { url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"}},
-        metaData:{fileName: "dummy.pdf"}
-      },
-      {
-        embedMode: "SIZED_CONTAINER"
-      });
-    });
     start();
   </script>
 

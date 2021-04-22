@@ -24,7 +24,20 @@ const handleRequest = function (request, response) {
  if (request.url === '/webrtc.js') {
     response.writeHead(200, { 'Content-Type': 'application/javascript' });
     response.end(fs.readFileSync('client/webrtc.js'));
-  } else if (request.url === '/style.css') {
+  } 
+  else if (request.url === '/draw.js') {
+    response.writeHead(200, { 'Content-Type': 'application/javascript' });
+    response.end(fs.readFileSync('client/draw.js'));
+  }
+  else if (request.url === '/js/jquery.event.drag-2.0.js') {
+    response.writeHead(200, { 'Content-Type': 'application/javascript' });
+    response.end(fs.readFileSync('js/jquery.event.drag-2.0.js'));
+  }
+  else if (request.url === '/js/jquery.js') {
+    response.writeHead(200, { 'Content-Type': 'application/javascript' });
+    response.end(fs.readFileSync('js/jquery.js'));
+  }
+  else if (request.url === '/style.css') {
     response.writeHead(200, { 'Content-Type': 'text/css' });
     response.end(fs.readFileSync('client/style.css'));
   } else {
@@ -49,7 +62,7 @@ wss.on('connection', function (ws) {
   });
 
   ws.on('error', () => ws.terminate());
-});
+  });
 
 wss.broadcast = function (data) {
   this.clients.forEach(function (client) {
@@ -59,8 +72,11 @@ wss.broadcast = function (data) {
   });
 };
 
-console.log('Server running.'
-);
+console.log('Server running.');
+
+
+// 
+
 
 // ----------------------------------------------------------------------------------------
 

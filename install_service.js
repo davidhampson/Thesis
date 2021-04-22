@@ -3,9 +3,9 @@ var Service = require('node-windows').Service;
 
 // Create a new service object
 var svc = new Service({
-  name:'Office Portal Server',
-  description: 'Serves web page and acts as WebRTC relay web server.',
-  script: 'C:\\Projects\\WebRTC\\Portal\\server\\server.js'
+  name:'Music Lesson',
+  description: '',
+  script: 'C:\\Users\\David Hampson\\Dropbox\\School\\THESIS\\Project\\MusicLesson\\server\\server.js'
 });
 
 // Listen for the "install" event, which indicates the
