@@ -21,13 +21,13 @@ const handleRequest = function (request, response) {
   // Render the single client html file for any request the HTTP server receives
   console.log('request received: ' + request.url);
 
- if (request.url === '/webrtc.js') {
+ if (request.url === '/js/webrtc.js') {
     response.writeHead(200, { 'Content-Type': 'application/javascript' });
-    response.end(fs.readFileSync('client/webrtc.js'));
+    response.end(fs.readFileSync('js/webrtc.js'));
   } 
-  else if (request.url === '/draw.js') {
+  else if (request.url === '/js/draw.js') {
     response.writeHead(200, { 'Content-Type': 'application/javascript' });
-    response.end(fs.readFileSync('client/draw.js'));
+    response.end(fs.readFileSync('js/draw.js'));
   }
   else if (request.url === '/js/jquery.event.drag-2.0.js') {
     response.writeHead(200, { 'Content-Type': 'application/javascript' });
@@ -73,8 +73,6 @@ wss.broadcast = function (data) {
 };
 
 console.log('Server running.');
-
-
 // 
 
 

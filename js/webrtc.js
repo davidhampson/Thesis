@@ -25,9 +25,9 @@ function start() {
 
   var isAudio = false;
 
-  if (urlParams.get('pdfOnly')) {
+  if (urlParams.get('musicOnly')) {
     document.getElementById('videos').style.display = 'none';
-    if (urlParams.get('teacher')) { // if its a teacher doing PDF only we don't need to show their face
+    if (urlParams.get('teacher')) { // if its a teacher doing music only we don't need to show their face
       return;
     }
     localDisplayName = "EPSON";

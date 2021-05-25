@@ -4,16 +4,12 @@
   "description": "David Hampson Thesis (compilation package)",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davidhampson/Thesis.git"
   },
-  "keywords": [
-    "webrtc"
-  ],
   "author": "David Hampson",
   "license": "MIT",
   "dependencies": {
