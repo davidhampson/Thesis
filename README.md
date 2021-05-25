@@ -12,9 +12,9 @@ https://www.npmjs.com/get-npm
 
 3. open the directory you want the project to be in in Git bash
 
-4. run "git clone <repo>"
+4. run "git clone [repo]"
 
-5. make sure package-lock is deleted. If not, rm -rf package-lock
+5. make sure package-lock.json is not present. If not, rm -rf package-lock.json
 
 6. make sure we have cert.pem and key.pem
 
@@ -22,7 +22,7 @@ https://www.npmjs.com/get-npm
 
 8. get ipv4 address (open command prompt, type ipconfig)
 
-9. connect to https://<ipv4>:8443 from the local network
+9. connect to https://[ipv4]:8443 from the local network
 
 URL PARAMS
 for teacher mode, pass teacher=true (allows for drawing on canvas)
